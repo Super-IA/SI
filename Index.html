@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Super-IA Superintelligence — Consejo de IAs</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background: radial-gradient(ellipse at top, #1a1a2e 0%, #0f0f1a 100%);
+    color: #e0e0e0; min-height: 100vh; display: flex; flex-direction: column;
+    align-items: center; padding: 2rem 1rem;
+  }
+  h1 {
+    font-size: 2rem;
+    background: linear-gradient(90deg, #00d4ff, #a855f7, #ec4899, #f59e0b);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    margin-bottom: 0.3rem; text-align: center;
+  }
+  .subtitle { color: #888; margin-bottom: 2rem; text-align: center; font-size: 0.95rem; }
+  .orchestra { display: flex; gap: 0.8rem; margin-bottom: 2rem; flex-wrap: wrap; justify-content: center; }
+  .instrument {
+    width: 78px; height: 78px; border-radius: 16px;
+    background: #1e1e2e; border: 1px solid #333;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    font-size: 1.6rem; transition: all 0.3s;
+  }
+  .instrument span { font-size: 0.55rem; color: #888; margin-top: 2px; }
+  .instrument.active {
+    background: linear-gradient(135deg, #00d4ff22, #a855f722);
+    border-color: #00d4ff;
+    box-shadow: 0 0 20px #00d4ff66, inset 0 0 10px #00d4ff22;
+    transform: translateY(-4px) scale(1.05);
+  }
+  .instrument.error { border-color: #ef4444; opacity: 0.5; }
+  .instrument.loading { animation: pulse 1s infinite; }
+  .panel {
+    width: 100%; max-width: 900px; background: #16161f;
+    border: 1px solid #2a2a3a; border-radius: 16px;
+    padding: 1.5rem; box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+  }
+  .input-row { display: flex; gap: 0.6rem; flex-wrap: wrap; align-items: stretch; }
+  input[type="text"] {
+    flex: 1; min-width: 200px; padding: 0.9rem 1rem;
+    border-radius: 10px; border: 1px solid #333;
+    background: #0f0f1a; color: #fff; font-size: 1rem; outline: none;
+    transition: border-color 0.2s;
+  }
+  input:focus { border-color: #00d4ff; }
+  button {
+    padding: 0.9rem 1.4rem; border: none; border-radius: 10px;
+    background: linear-gradient(135deg, #00d4ff, #a855f7);
+    color: #fff; font-weight: 600; cursor: pointer; font-size: 0.95rem;
+    transition: transform 0.15s, box-shadow 0.2s, background 0.3s;
+    display: flex; align-items: center; justify-content: center; gap: 0.4rem;
+  }
+  button:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 6px 20px #a855f755; }
+  button:disabled { opacity: 0.5; cursor: not-allowed; }
+  #micBtn { background: #2a2a3a; border: 1px solid #444; padding: 0.9rem 1.2rem; font-size: 1.2rem; }
+  #micBtn:hover:not(:disabled) { background: #3a3a4a; border-color: #00d4ff; box-shadow: none; }
+  #micBtn.listening { background: #ef4444; border-color: #ef4444; color: #fff; animation: pulse-mic 1.5s infinite; }
+  button.judge { background: linear-gradient(135deg, #f59e0b, #ec4899); width: 100%; margin-top: 1rem; display: none; }
+  .log { margin-top: 1.5rem; display: flex; flex-direction: column; gap: 0.9rem; max-height: 500px; overflow-y: auto; padding-right: 4px; }
+  .log::-webkit-scrollbar { width: 6px; }
+  .log::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
+  .task { background: #1c1c2a; border-left: 3px solid #00d4ff; border-radius: 8px; padding: 0.9rem 1.1rem; animation: fadeIn 0.3s ease; }
+  .task.error { border-left-color: #ef4444; }
+  .task.judge { border-left-color: #f59e0b; background: #1e1a12; }
+  .task .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; gap: 0.5rem; flex-wrap: wrap; }
+  .task .query { font-weight: 600; color: #fff; font-size: 0.92rem; }
+  .badge { font-size: 0.7rem; padding: 0.2rem 0.55rem; border-radius: 20px; background: #00d4ff22; color: #00d4ff; border: 1px solid #00d4ff44; white-space: nowrap; }
+  .badge.deepseek { background: #00d4ff22; color: #00d4ff; border-color: #00d4ff44; }
+  .badge.chatgpt { background: #22c55e22; color: #22c55e; border-color: #22c55e44; }
+  .badge.claude  { background: #ec489922; color: #ec4899; border-color: #ec489944; }
+  .badge.gemini  { background: #f59e0b22; color: #f59e0b; border-color: #f59e0b44; }
+  .badge.judge   { background: #a855f722; color: #a855f7; border-color: #a855f744; }
+  .task .response { font-size: 0.88rem; color: #c0c0d0; line-height: 1.6; white-space: pre-wrap; word-wrap: break-word; }
+  .status { font-size: 0.82rem; color: #666; margin-top: 1rem; text-align: center; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
+  @keyframes pulse-mic { 0%,100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); } 50% { box-shadow: 0 0 0 10px rgba(239, 68, 68, 0); } }
+</style>
+</head>
+<body>
+  <h1>🧠 Super-IA Superintelligence</h1>
+  <p class="subtitle">Consulta simultánea a DeepSeek · ChatGPT · Claude · Gemini</p>
+  <div class="orchestra" id="orchestra">
+    <div class="instrument" data-provider="DeepSeek">🐋<span>DeepSeek</span></div>
+    <div class="instrument" data-provider="ChatGPT">🤖<span>ChatGPT</span></div>
+    <div class="instrument" data-provider="Claude">🎭<span>Claude</span></div>
+    <div class="instrument" data-provider="Gemini">✨<span>Gemini</span></div>
+  </div>
+  <div class="panel">
+    <div class="input-row">
+      <input type="text" id="query" placeholder="Escribe o usa el micrófono..." autocomplete="off">
+      <button id="micBtn" title="Hablar por micrófono">🎤</button>
+      <button id="sendBtn">Convocar 🎯</button>
+    </div>
+    <button class="judge" id="judgeBtn">🏆 Pedir veredicto al Presidente</button>
+    <div class="log" id="log"></div>
+    <div class="status" id="status">Listo para dirigir la orquesta</div>
+  </div>
+<script>
+  const logEl = document.getElementById('log');
+  const statusEl = document.getElementById('status');
+  const inputEl = document.getElementById('query');
+  const sendBtn = document.getElementById('sendBtn');
+  const micBtn = document.getElementById('micBtn');
+  const judgeBtn = document.getElementById('judgeBtn');
+  const instruments = document.querySelectorAll('.instrument');
+  let lastPrompt = null;
+  let lastResults = [];
+  const BADGE_MAP = { DeepSeek:'deepseek', ChatGPT:'chatgpt', Claude:'claude', Gemini:'gemini' };
+
+  function escapeHtml(str) { const d = document.createElement('div'); d.textContent = String(str ?? ''); return d.innerHTML; }
+  function setInstrumentState(provider, state) {
+    const el = document.querySelector(`.instrument[data-provider="${provider}"]`);
+    if (!el) return;
+    el.classList.remove('active','loading','error');
+    if (state) el.classList.add(state);
+  }
+  function resetInstruments() { instruments.forEach(i => i.classList.remove('active','loading','error')); }
+  function addTask({ title, badgeText, badgeClass, body, extraClass='' }) {
+    const div = document.createElement('div');
+    div.className = 'task ' + extraClass;
+    div.innerHTML = `<div class="header"><span class="query">${escapeHtml(title)}</span><span class="badge ${badgeClass}">${escapeHtml(badgeText)}</span></div><div class="response">${escapeHtml(body)}</div>`;
+    logEl.prepend(div);
+    return div;
+  }
+
+  async function handleSend() {
+    const prompt = inputEl.value.trim();
+    if (!prompt) return;
+    lastPrompt = prompt; lastResults = [];
+    judgeBtn.style.display = 'none';
+    logEl.innerHTML = '';
+    resetInstruments();
+    sendBtn.disabled = true; inputEl.value = '';
+    statusEl.textContent = '🧠 Convocando al Consejo...';
+    instruments.forEach(i => i.classList.add('loading'));
+    const loadingTask = addTask({ title: prompt, badgeText: '⏳ Consultando...', badgeClass: 'judge', body: 'Consultando a los modelos en paralelo...' });
+
+    try {
+      const res = await fetch('/api/council', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ prompt })
+      });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const data = await res.json();
+      loadingTask.remove();
+      lastResults = data.results;
+      data.results.forEach(r => {
+        setInstrumentState(r.provider, r.ok ? 'active' : 'error');
+        setTimeout(() => setInstrumentState(r.provider, null), 2500);
+        addTask({ title: r.provider, badgeText: r.ok ? '✅ Respuesta' : '❌ Error', badgeClass: BADGE_MAP[r.provider] || 'judge', body: r.ok ? r.text : `Error: ${r.error}`, extraClass: r.ok ? '' : 'error' });
+      });
+      const okCount = data.results.filter(r => r.ok).length;
+      statusEl.textContent = `✅ ${okCount}/4 modelos respondieron.`;
+      if (okCount >= 2) judgeBtn.style.display = 'block';
+    } catch (err) {
+      loadingTask.remove();
+      addTask({ title:'Error de red', badgeText:'❌', badgeClass:'judge', body: err.message, extraClass:'error' });
+      statusEl.textContent = '❌ No se pudo contactar con el servidor.';
+    } finally {
+      sendBtn.disabled = false; inputEl.focus();
+    }
+  }
+
+  async function handleJudge() {
+    if (!lastPrompt || lastResults.length === 0) return;
+    judgeBtn.disabled = true;
+    statusEl.textContent = '🏆 El Presidente está deliberando...';
+    try {
+      const res = await fetch('/api/judge', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ prompt: lastPrompt, answers: lastResults })
+      });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const data = await res.json();
+      addTask({ title:'🏆 Veredicto del Presidente', badgeText:'Síntesis final', badgeClass:'judge', body: data.verdict, extraClass:'judge' });
+      statusEl.textContent = '✅ Veredicto emitido.';
+    } catch (err) {
+      addTask({ title:'Error del juez', badgeText:'❌', badgeClass:'judge', body: err.message, extraClass:'error' });
+      statusEl.textContent = '❌ No se pudo emitir veredicto.';
+    } finally { judgeBtn.disabled = false; }
+  }
+
+  let recognition = null;
+  let isListening = false;
+  function initSpeechRecognition() {
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (!SpeechRecognition) { micBtn.style.display = 'none'; return; }
+    recognition = new SpeechRecognition();
+    recognition.lang = 'es-ES';
+    recognition.interimResults = true;
+    recognition.continuous = false;
+    recognition.onstart = () => {
+      isListening = true; micBtn.classList.add('listening'); micBtn.textContent = '🔴';
+      statusEl.textContent = '🎤 Escuchando...'; inputEl.placeholder = 'Escuchando...';
+    };
+    recognition.onresult = (event) => {
+      let finalTranscript = '', interimTranscript = '';
+      for (let i = event.resultIndex; i < event.results.length; ++i) {
+        if (event.results[i].isFinal) finalTranscript += event.results[i][0].transcript;
+        else interimTranscript += event.results[i][0].transcript;
+      }
+      inputEl.value = finalTranscript || interimTranscript;
+    };
+    recognition.onerror = (event) => {
+      if (event.error === 'not-allowed') statusEl.textContent = '❌ Permiso de micrófono denegado.';
+      else statusEl.textContent = '❌ Error de micrófono.';
+      stopListening();
+    };
+    recognition.onend = () => {
+      stopListening();
+      if (inputEl.value.trim().length > 0) handleSend();
+    };
+  }
+  function stopListening() {
+    isListening = false; micBtn.classList.remove('listening'); micBtn.textContent = '🎤';
+    inputEl.placeholder = 'Escribe o usa el micrófono...';
+  }
+  micBtn.addEventListener('click', () => {
+    if (!recognition) return;
+    if (isListening) recognition.stop();
+    else { inputEl.value = ''; try { recognition.start(); } catch(e) {} }
+  });
+  sendBtn.addEventListener('click', handleSend);
+  judgeBtn.addEventListener('click', handleJudge);
+  inputEl.addEventListener('keydown', e => { if (e.key === 'Enter') handleSend(); });
+  initSpeechRecognition();
+</script>
+</body>
+</html>
