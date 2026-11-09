@@ -1,208 +1,333 @@
-<!DOCTYPE html>
-<html lang="es"> 
+<!doctype html>
+<html lang="es">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Super IA Superintelligence · Política de privacidad</title>
-<link rel="icon" type="image/png" href="favicon.png"> 
-<meta name="description" content="Política de privacidad de Super IA Superintelligence: qué datos trata la aplicación, para qué, con quién se comparten y qué derechos tienes.">
+<title>Super IA Superintelligence: pregunta una vez, responde el modelo adecuado</title>
+<meta name="description" content="Super IA elige por ti el mejor modelo de inteligencia artificial para cada pregunta. Si es difícil, consulta a varios y funde sus respuestas. También genera imágenes, escucha tu voz y lee documentos. Gratis.">
+<link rel="canonical" href="https://super-ia.es/">
+<meta name="theme-color" content="#2B50F0">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Super IA Superintelligence">
+<meta property="og:title" content="Super IA Superintelligence">
+<meta property="og:description" content="Pregunta una vez. Responde el modelo de IA que mejor encaja.">
+<meta property="og:url" content="https://super-ia.es/">
+<meta property="og:image" content="https://super-ia.es/assets/og.png">
+<meta property="og:locale" content="es_ES">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" sizes="192x192" href="/assets/icon-192.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Super IA Superintelligence","url":"https://super-ia.es/","applicationCategory":"ProductivityApplication","operatingSystem":"Web","inLanguage":"es","description":"Enrutador de modelos de inteligencia artificial: elige el modelo adecuado para cada pregunta, compara respuestas y genera imágenes.","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"}}
+</script>
 <style>
-  :root{--bg:#F8F9FB;--ink:#121B26;--muted:#5B6877;--line:#D3D9E0;--accent:#2B50F0;--note:#ECEFF3;
-        --g1:#1E3A8A;--g2:#2563EB;--g3:#0284C7;color-scheme:light dark}
-  @media (prefers-color-scheme:dark){:root{--bg:#0E141B;--ink:#E4EAF1;--muted:#93A0B0;--line:#26323F;--accent:#7C93FF;--note:#151D27;
-        --g1:#93C5FD;--g2:#60A5FA;--g3:#38BDF8}}
-  *{box-sizing:border-box}
-  body{margin:0;background:var(--bg);color:var(--ink);font:400 1rem/1.65 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
-  main{max-width:46rem;margin:0 auto;padding:2rem 1rem 4rem}
-  nav{display:flex;gap:1rem;margin:0 0 2rem;font-size:.9375rem}
-  a{color:var(--accent)}
-  a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-  h1{margin:0 0 .6rem;line-height:1.1}
-  .brand-title{display:block;width:fit-content;max-width:100%;font-size:clamp(1.9rem,8.5vw,3.4rem);font-weight:800;letter-spacing:-.03em;text-wrap:balance;color:var(--g2)}
-  @supports ((-webkit-background-clip:text) or (background-clip:text)){
-    .brand-title{background:linear-gradient(90deg,var(--g1),var(--g2) 55%,var(--g3));-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
+  :root{
+    --paper:#F6F9FF; --surface:#FFFFFF; --ink:#0B1B3A; --muted:#475A7C; --line:#D5E0F5; --mist:#E8EFFD;
+    --cobalt:#2B50F0; --on-cobalt:#FFFFFF; --g1:#1E3A8A; --g2:#2563EB; --g3:#0284C7; --spark:#FF6B3D;
+    --shadow:0 30px 60px -30px rgba(30,58,138,.35), 0 8px 20px -12px rgba(30,58,138,.25);
+    --font-display:"Bricolage Grotesque","Inter Display",system-ui,sans-serif;
+    --font-body:"IBM Plex Sans",Inter,system-ui,-apple-system,"Segoe UI",sans-serif;
+    color-scheme:light dark;
   }
-  .doc-title{display:block;margin-top:.45rem;font-size:clamp(1.1rem,3.5vw,1.375rem);font-weight:600;letter-spacing:-.01em;color:var(--ink)}
-  h2{font-size:1.2rem;line-height:1.3;margin:2.25rem 0 .5rem}
-  p,ul{margin:.6rem 0}
-  ul{padding-left:1.25rem}
-  li{margin:.35rem 0}
-  .meta{color:var(--muted);margin:0 0 1.5rem}
-  .note{background:var(--note);border-left:3px solid var(--accent);padding:.7rem 1rem;border-radius:0 8px 8px 0}
-  code{font:.875em ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;background:var(--note);padding:.1em .35em;border-radius:5px}
-  hr{border:0;border-top:1px solid var(--line);margin:3.5rem 0}
-  section{overflow-wrap:anywhere}
+  @media (prefers-color-scheme:dark){
+    :root{--paper:#0A1228;--surface:#0F1A38;--ink:#E6EDFB;--muted:#9AABCE;--line:#22305A;--mist:#111C3A;
+      --cobalt:#7C93FF;--on-cobalt:#0A1228;--g1:#93C5FD;--g2:#60A5FA;--g3:#38BDF8;
+      --shadow:0 30px 60px -30px rgba(0,0,0,.7), 0 8px 20px -12px rgba(0,0,0,.6)}
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  body{margin:0;background:var(--paper);color:var(--ink);font:400 1.0625rem/1.65 var(--font-body)}
+  a{color:var(--cobalt)}
+  a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var(--cobalt);outline-offset:3px;border-radius:6px}
+  img{max-width:100%;height:auto}
+  .wrap{width:min(100% - 2rem,70rem);margin-inline:auto}
+  .skip{position:absolute;left:-9999px}.skip:focus{left:1rem;top:1rem;background:var(--surface);padding:.5rem .8rem;border-radius:8px;z-index:10}
+
+  /* Cabecera */
+  .top{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1rem 0}
+  .brand{display:flex;align-items:center;gap:.7rem;text-decoration:none;color:inherit}
+  .brand img{width:40px;height:40px;border-radius:10px;display:block}
+  .brand b{font:800 1.125rem/1.1 var(--font-display);letter-spacing:-.01em;
+    background:linear-gradient(90deg,var(--g1),var(--g2) 55%,var(--g3));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .nav{display:flex;align-items:center;gap:1.4rem;font-size:.9375rem}
+  .nav a{color:var(--muted);text-decoration:none}.nav a:hover{color:var(--ink)}
+  .nav a.btn-primary,.nav a.btn-primary:hover{color:var(--on-cobalt)}
+  .btn{display:inline-block;text-decoration:none;font:600 1rem/1 var(--font-body);padding:.85rem 1.3rem;border-radius:12px;border:1.5px solid transparent;cursor:pointer}
+  .btn-primary{background:var(--cobalt);color:var(--on-cobalt)}
+  .btn-primary:hover{filter:brightness(1.08)}
+  .btn-quiet{border-color:var(--line);color:var(--ink);background:transparent}
+  .btn-quiet:hover{background:var(--mist)}
+  .nav .btn{padding:.6rem 1rem;font-size:.9375rem}
+  @media (max-width:720px){.nav a:not(.btn){display:none}}
+
+  /* Portada */
+  .hero{display:grid;gap:2.5rem;padding:clamp(2rem,6vw,4.5rem) 0 clamp(3rem,7vw,5.5rem);align-items:center}
+  @media (min-width:60rem){.hero{grid-template-columns:1.05fr 1fr;gap:3.5rem}}
+  h1{font:800 clamp(2.5rem,6.2vw,4.4rem)/1.02 var(--font-display);letter-spacing:-.028em;word-spacing:.06em;margin:0 0 1.2rem;text-wrap:balance}
+  .lede{font-size:1.1875rem;color:var(--muted);max-width:34rem;margin:0 0 1.8rem}
+  .cta{display:flex;flex-wrap:wrap;gap:.75rem;margin:0 0 1rem}
+  .fine{font-size:.875rem;color:var(--muted);margin:0}
+
+  /* Demostración del enrutador */
+  .demo{background:var(--surface);border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow);overflow:hidden}
+  .demo-bar{display:flex;align-items:center;gap:.6rem;padding:.85rem 1.1rem;border-bottom:1px solid var(--line);font:700 .9375rem var(--font-display)}
+  .demo-bar svg{width:22px;height:22px;color:var(--cobalt)}
+  .tabs{display:flex;gap:.35rem;padding:.8rem 1.1rem 0;flex-wrap:wrap}
+  .tabs button{font:500 .875rem var(--font-body);padding:.4rem .8rem;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--muted);cursor:pointer}
+  .tabs button[aria-selected="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+  .demo-body{padding:1.1rem 1.1rem 1.3rem;min-height:19rem}
+  .q{border-left:3px solid var(--cobalt);padding:.1rem 0 .1rem .8rem;margin:0 0 1.1rem;font-size:1.0625rem;min-height:3.3em}
+  .q .caret{display:inline-block;width:2px;height:1.05em;background:var(--cobalt);vertical-align:-.15em;margin-left:1px}
+  @media (prefers-reduced-motion:no-preference){.q .caret{animation:blink 1s steps(2) infinite}@keyframes blink{50%{opacity:0}}}
+  .trace{display:flex;align-items:center;gap:.5rem;font-size:.875rem;margin:0 0 .8rem;list-style:none;padding:0}
+  .trace li{display:flex;align-items:center;gap:.4rem;color:var(--muted)}
+  .trace li::before{content:"";width:.6rem;height:.6rem;border-radius:50%;border:2px solid var(--line);background:transparent}
+  .trace li.on{color:var(--ink)}.trace li.on::before{background:var(--cobalt);border-color:var(--cobalt)}
+  .trace .sep{flex:0 0 2.2rem;height:2px;background:var(--line)}.trace .sep.on{background:var(--cobalt)}
+  .chips{display:flex;flex-wrap:wrap;gap:.4rem;margin:0 0 .9rem;padding:0;list-style:none;min-height:2rem}
+  .chips li{font-size:.8125rem;padding:.2rem .65rem;border-radius:999px;border:1px solid var(--line);background:var(--mist)}
+  .chips li.hot{border-color:var(--cobalt);color:var(--cobalt);background:transparent}
+  .out{background:var(--mist);border-radius:12px;padding:.85rem 1rem;font-size:.9375rem;min-height:5.6rem}
+  .out b{display:block;font:700 .9375rem var(--font-display);margin:0 0 .15rem}
+  .out p{margin:0;color:var(--muted)}
+  .out .spark{display:inline-block;width:.6rem;height:.6rem;margin-right:.4rem;background:var(--spark);clip-path:polygon(50% 0,62% 38%,100% 50%,62% 62%,50% 100%,38% 62%,0 50%,38% 38%)}
+  .demo[data-live="1"] .q,.demo[data-live="1"] .chips,.demo[data-live="1"] .out{transition:opacity .25s}
+  .demo .pending{opacity:0}
+
+  /* Secciones */
+  section{padding:clamp(3rem,7vw,5.5rem) 0}
+  h2{font:800 clamp(1.8rem,4vw,2.7rem)/1.08 var(--font-display);letter-spacing:-.025em;margin:0 0 1rem;text-wrap:balance}
+  h3{font:700 1.125rem/1.25 var(--font-display);margin:0 0 .3rem;letter-spacing:-.01em}
+  .band{background:var(--mist);border-block:1px solid var(--line)}
+  .intro{max-width:36rem;color:var(--muted);margin:0 0 2.5rem}
+
+  .steps{list-style:none;margin:0;padding:0;display:grid;gap:2rem;counter-reset:s}
+  @media (min-width:55rem){.steps{grid-template-columns:repeat(3,1fr);gap:2.5rem;position:relative}
+    .steps::before{content:"";position:absolute;left:0;right:0;top:1.45rem;height:2px;background:linear-gradient(90deg,var(--g1),var(--g2),var(--g3));opacity:.35}}
+  .steps li{counter-increment:s;position:relative}
+  .steps li::before{content:counter(s);display:grid;place-items:center;width:2.9rem;height:2.9rem;border-radius:50%;background:var(--cobalt);color:var(--on-cobalt);font:800 1.25rem var(--font-display);margin-bottom:1rem;position:relative}
+  .steps p{margin:0;color:var(--muted);max-width:22rem}
+
+  .features{display:grid;gap:2rem}
+  @media (min-width:60rem){.features{grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);gap:4rem}.features .sticky{position:sticky;top:2rem;align-self:start}}
+  .flist{margin:0;padding:0;list-style:none}
+  .flist li{padding:1.15rem 0;border-top:1px solid var(--line)}
+  .flist li:last-child{border-bottom:1px solid var(--line)}
+  .flist p{margin:0;color:var(--muted);max-width:38rem}
+
+  .privacy-grid{display:grid;gap:2rem}
+  @media (min-width:60rem){.privacy-grid{grid-template-columns:1fr 1fr;gap:4rem}}
+  .promises{margin:0;padding:0;list-style:none}
+  .promises li{padding-left:1.7rem;position:relative;margin:0 0 .9rem}
+  .promises li::before{content:"";position:absolute;left:0;top:.5rem;width:.7rem;height:.7rem;border-radius:50%;background:var(--cobalt)}
+
+  details{border-top:1px solid var(--line)}
+  details:last-of-type{border-bottom:1px solid var(--line)}
+  summary{cursor:pointer;padding:1.05rem 2rem 1.05rem 0;font:700 1.0625rem var(--font-display);list-style:none;position:relative}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"+";position:absolute;right:.2rem;top:.8rem;font:500 1.5rem/1 var(--font-body);color:var(--cobalt)}
+  details[open] summary::after{content:"–"}
+  details p{margin:0 0 1.1rem;color:var(--muted);max-width:40rem}
+
+  .final{text-align:left}
+  .final h2{max-width:26rem}
+  footer{border-top:1px solid var(--line);padding:2rem 0 3rem;font-size:.9375rem;color:var(--muted)}
+  footer .row{display:flex;flex-wrap:wrap;gap:.6rem 1.6rem;justify-content:space-between}
+  footer nav{display:flex;flex-wrap:wrap;gap:.4rem 1.4rem}
+  footer a{color:var(--muted)}footer a:hover{color:var(--ink)}
 </style>
 </head>
 <body>
-<main>
+<a class="skip" href="#contenido">Saltar al contenido</a>
 
-<nav aria-label="Idioma / Language">
-  <a href="#es">Español</a>
-  <a href="#en">English</a>
-</nav>
+<div class="wrap">
+  <header class="top">
+    <a class="brand" href="/" aria-label="Super IA Superintelligence, inicio">
+      <img src="/assets/icon-192.png" width="40" height="40" alt="">
+      <b>Super IA Superintelligence</b>
+    </a>
+    <nav class="nav" aria-label="Principal">
+      <a href="#como-funciona">Cómo funciona</a>
+      <a href="#funciones">Funciones</a>
+      <a href="#privacidad">Privacidad</a>
+      <a href="#preguntas">Preguntas</a>
+      <a class="btn btn-primary" href="https://app.super-ia.es">Entrar</a>
+    </nav>
+  </header>
+</div>
 
-<!-- ======================= ESPAÑOL ======================= -->
-<section id="es" lang="es">
-<h1><span class="brand-title">Super IA Superintelligence</span><span class="doc-title">Política de privacidad</span></h1>
-<p class="meta">Última actualización: 31 de octubre de 2026</p>
+<main id="contenido">
+  <div class="wrap hero">
+    <div>
+      <h1>Pregunta una vez. Responde el modelo que mejor encaja.</h1>
+      <p class="lede">Super IA lee tu pregunta, elige entre varios modelos de inteligencia artificial y te da la respuesta. Si la pregunta es difícil, consulta a varios y los funde en una sola.</p>
+      <div class="cta">
+        <a class="btn btn-primary" href="https://app.super-ia.es">Crear cuenta gratis</a>
+        <a class="btn btn-quiet" href="#como-funciona">Ver cómo funciona</a>
+      </div>
+      <p class="fine">Gratis, con un límite diario de consultas. Para mayores de 16 años.</p>
+    </div>
 
-<p>Esta política explica qué datos trata Super IA Superintelligence (la «aplicación»), para qué, con quién se comparten y qué derechos tienes. La aplicación recibe tus preguntas, las envía a uno o varios modelos de inteligencia artificial de terceros y te devuelve la respuesta o la imagen generada.</p>
+    <div class="demo" id="demo" aria-label="Ejemplo de cómo Super IA elige el modelo">
+      <div class="demo-bar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" aria-hidden="true"><path d="M17 7C17 4.5 14.5 4 12 4C9 4 7 5.8 7 8C7 10.2 9 11.2 12 12C15 12.8 17 13.8 17 16C17 18.2 15 20 12 20C9.5 20 7 19.5 7 17"/></svg>
+        Así decide Super IA
+      </div>
+      <div class="tabs" role="tablist" aria-label="Ejemplos">
+        <button role="tab" aria-selected="true" data-i="0">Código</button>
+        <button role="tab" aria-selected="false" data-i="1">Actualidad</button>
+        <button role="tab" aria-selected="false" data-i="2">Decisión difícil</button>
+        <button role="tab" aria-selected="false" data-i="3">Imagen</button>
+      </div>
+      <div class="demo-body" role="tabpanel">
+        <p class="q" id="dq"><span id="dqt">Me sale «IndexError: list index out of range» en mi función de Python. ¿Qué falla?</span><span class="caret" aria-hidden="true"></span></p>
+        <ol class="trace" aria-hidden="true">
+          <li class="on" id="t1">Clasificar</li><li class="sep on" id="ts" style="padding:0"></li><li class="on" id="t2">Responder</li>
+        </ol>
+        <ul class="chips" id="dc"><li class="hot">Programación</li><li>Complejidad media</li></ul>
+        <div class="out" id="do" aria-live="polite"><b><span class="spark" aria-hidden="true"></span>Responde un modelo especializado en código</b><p>Te explica el fallo, te da la línea corregida y te avisa de los casos límite.</p></div>
+      </div>
+    </div>
+  </div>
 
-<h2>1. Quién es el responsable</h2>
-<p>El responsable del tratamiento es JASM30. Puedes escribirle a <a href="mailto:superIA.superintelligence@proton.me">superIA.superintelligence@proton.me</a> para cualquier asunto de privacidad.</p>
+  <div class="band">
+    <section id="como-funciona" class="wrap">
+      <h2>Tú preguntas. Super IA decide quién responde.</h2>
+      <p class="intro">No hace falta saber qué modelo es mejor para cada cosa. Eso lo decide la aplicación, y siempre te enseña quién ha respondido.</p>
+      <ol class="steps">
+        <li><h3>Preguntas como quieras</h3><p>Escribe, dicta con la voz o adjunta un PDF, un texto o una foto.</p></li>
+        <li><h3>Se elige el modelo</h3><p>Un clasificador rápido detecta el tipo de pregunta y lo difícil que es. Si depende de información reciente, activa la búsqueda web.</p></li>
+        <li><h3>Recibes una respuesta que puedes comprobar</h3><p>Normalmente contesta un solo modelo. Si es difícil, responden varios y se funden en una sola, con un nivel de confianza. Y puedes pedir que otro modelo la verifique.</p></li>
+      </ol>
+    </section>
+  </div>
 
-<h2>2. Qué datos tratamos</h2>
-<ul>
-  <li><strong>Cuenta.</strong> Tu nombre de usuario y tu contraseña. La contraseña se guarda cifrada con una función de hash y nunca la vemos en claro. Las cuentas las crea el responsable; no te pedimos correo electrónico ni nombre.</li>
-  <li><strong>Lo que escribes y envías.</strong> Tus preguntas, los últimos mensajes de la conversación en curso, las imágenes y documentos que adjuntas (el texto de un PDF o archivo se extrae en tu navegador y se envía con la pregunta) y las respuestas o imágenes generadas. Solo los usamos para obtener la respuesta. No los guardamos en nuestra base de datos: la conversación existe en tu navegador mientras la tienes abierta.</li>
-  <li><strong>Registro de uso.</strong> Además de los totales diarios del servicio (coste y altas, sin datos personales). Por cada cuenta, el número de consultas y el coste estimado de cada día, para aplicar los límites diarios.</li>
-  <li><strong>Aceptación de esta política y de los términos de uso.</strong> La fecha en que los aceptaste.</li>
-  <li><strong>Voz (opcional).</strong> Si usas el micrófono para dictar, el audio lo procesa el servicio de reconocimiento de voz de tu navegador (por ejemplo Google en Chrome o Apple en Safari), según su propia política. Nosotros solo recibimos el texto resultante, nunca el audio. La lectura en voz alta usa las voces de tu dispositivo.</li>
-  <li><strong>Datos técnicos.</strong> Tu dirección IP y datos básicos de la conexión (navegador, hora). Los usamos por seguridad, por ejemplo para limitar los intentos de acceso fallidos, y pueden quedar en los registros del servidor.</li>
-  <li><strong>Tu propia clave de OpenRouter, si decides usarla.</strong> Se guarda en tu navegador y se envía con cada consulta para usarla en tu nombre. Lo mismo ocurre con tus instrucciones personales (si las escribes): se guardan en tu navegador y viajan con cada pregunta. No la guardamos en el servidor.</li>
-</ul>
+  <section id="funciones" class="wrap">
+    <div class="features">
+      <div class="sticky">
+        <h2>Todo en un solo sitio</h2>
+        <p class="intro" style="margin:0">Una cuenta, varias inteligencias artificiales y las herramientas que se usan a diario.</p>
+      </div>
+      <ul class="flist">
+        <li><h3>El modelo adecuado para cada pregunta</h3><p>Código, razonamiento, noticias, escritura, imágenes… cada tipo tiene sus modelos. Ves cuál ha respondido y cuánto ha costado.</p></li>
+        <li><h3>Varios modelos para lo difícil</h3><p>Responden por separado y se funde lo mejor en una respuesta final. También puedes compararlos lado a lado y decidir tú.</p></li>
+        <li><h3>Verificar con otro modelo</h3><p>Un segundo modelo revisa la respuesta y señala errores. O pides una alternativa con un botón.</p></li>
+        <li><h3>Imágenes</h3><p>Crea y edita imágenes con Nano Banana, elige el formato y vuelve a editar el resultado. Las imágenes se marcan como generadas con IA.</p></li>
+        <li><h3>Voz</h3><p>Dicta tus preguntas, escucha las respuestas o conversa sin tocar el móvil. Depende de lo que permita tu navegador.</p></li>
+        <li><h3>Documentos y fotos</h3><p>Adjunta un PDF, un texto o código y pregunta sobre su contenido.</p></li>
+        <li><h3>Historial en tu dispositivo</h3><p>Tus conversaciones se guardan en tu navegador, no en nuestro servidor. Puedes borrarlas cuando quieras.</p></li>
+        <li><h3>Como una app</h3><p>Se instala en el móvil desde el navegador, con su icono en la pantalla de inicio.</p></li>
+      </ul>
+    </div>
+  </section>
 
-<h2>3. Para qué los usamos y con qué base legal</h2>
-<ul>
-  <li>Darte el servicio (iniciar sesión, responder preguntas, generar imágenes): es necesario para prestar el servicio que solicitas (art. 6.1.b del RGPD).</li>
-  <li>Seguridad, prevención de abusos y límites de uso: interés legítimo en proteger el servicio y su coste (art. 6.1.f).</li>
-  <li>Poder acreditar que aceptaste esta política: interés legítimo (art. 6.1.f).</li>
-</ul>
-<p>No usamos tus datos para publicidad ni para elaborar perfiles, no vendemos datos personales y no usamos tus conversaciones para entrenar modelos.</p>
+  <div class="band">
+    <section id="privacidad" class="wrap">
+      <div class="privacy-grid">
+        <div>
+          <h2>Tus datos, sin letra pequeña</h2>
+          <p class="intro" style="margin:0">Lo que hacemos con ellos está escrito en lenguaje claro. Y como es una IA, también te decimos lo que no hace.</p>
+        </div>
+        <div>
+          <ul class="promises">
+            <li>Tus conversaciones <strong>no se guardan en nuestro servidor</strong>. Viajan a los proveedores de modelos para poder responderte, y el historial vive en tu dispositivo.</li>
+            <li>Guardamos tu usuario, tu contraseña cifrada, cuántas consultas haces al día y cuándo aceptaste las condiciones.</li>
+            <li>Si dictas por voz, el audio lo procesa tu navegador. Nosotros solo recibimos el texto.</li>
+            <li>Puedes <strong>descargar tus datos y eliminar tu cuenta</strong> desde Ajustes, sin escribir a nadie.</li>
+            <li>Sin publicidad ni analítica.</li>
+            <li>Las respuestas pueden contener errores y no sustituyen a un médico, un abogado ni un asesor.</li>
+          </ul>
+          <p><a href="/privacidad/">Política de privacidad</a> · <a href="/terminos/">Términos de uso</a></p>
+        </div>
+      </div>
+    </section>
+  </div>
 
-<h2>4. Con quién se comparten</h2>
-<p>Para responderte, la aplicación necesita enviar tu contenido a terceros:</p>
-<ul>
-  <li><strong>OpenRouter</strong> (<a href="https://openrouter.ai/privacy" target="_blank" rel="noopener noreferrer">su política de privacidad</a>). Es el intermediario que recibe tus preguntas, tus imágenes y, si la usas, tu clave, y las dirige al modelo adecuado.</li>
-  <li><strong>Proveedores de modelos de IA</strong> a los que OpenRouter dirige la consulta, por ejemplo Anthropic, OpenAI o Google. Según la pregunta se usa un modelo o varios a la vez. Para crear o editar imágenes se usa un modelo de imágenes de Google (Nano Banana). Cada proveedor aplica su propia política sobre los datos que recibe.</li>
-  <li><strong>Búsqueda web.</strong> Si activas «Búsqueda web», o la pregunta trata de información reciente, el texto de la pregunta puede usarse para buscar en internet a través del servicio de búsqueda de OpenRouter.</li>
-  <li><strong>El proveedor que aloja el servidor</strong>, que presta la infraestructura.</li>
-  <li><strong>PayPal</strong>, solo si decides hacer una donación voluntaria desde el enlace de la web. El pago lo gestiona PayPal con su propia política; nosotros no recibimos datos de tu tarjeta.</li>
-</ul>
-<p>No cedemos tus datos a nadie más, salvo obligación legal. Por eso, no incluyas en tus preguntas datos sensibles tuyos o de otras personas si no quieres que lleguen a estos proveedores.</p>
+  <section id="preguntas" class="wrap">
+    <h2>Preguntas frecuentes</h2>
+    <details><summary>¿Cuánto cuesta?</summary><p>Nada. El servicio es gratuito y cada cuenta tiene un límite diario de consultas para que alcance para todos.</p></details>
+    <details><summary>¿Qué modelos usa?</summary><p>Modelos de Anthropic, OpenAI, Google y otros, a través de OpenRouter. Van cambiando con el tiempo, y la aplicación te muestra qué modelo ha respondido en cada ocasión.</p></details>
+    <details><summary>¿Guardáis mis conversaciones?</summary><p>No en el servidor. El historial se guarda en tu propio navegador y puedes desactivarlo o borrarlo. Para responderte, tu pregunta sí pasa por OpenRouter y por el proveedor del modelo, como explica la política de privacidad.</p></details>
+    <details><summary>¿Puede equivocarse?</summary><p>Sí. Es una inteligencia artificial: contrasta lo importante, y para temas de salud, leyes o dinero consulta a un profesional. El botón «Verificar con otro modelo» ayuda, pero no es una garantía.</p></details>
+    <details><summary>¿Quién puede usarla?</summary><p>Cualquier persona de 16 años o más. Te pedimos confirmarlo al crear la cuenta.</p></details>
+    <details><summary>¿Funciona en el móvil?</summary><p>Sí. Abre la web en Chrome o Safari y elige «Instalar aplicación» o «Añadir a pantalla de inicio».</p></details>
+    <details><summary>¿Cómo os contacto?</summary><p>Escribe a <a href="mailto:superIA.superintelligence@proton.me">superIA.superintelligence@proton.me</a>.</p></details>
+  </section>
 
-<h2>5. Transferencias internacionales</h2>
-<p>Algunos de estos proveedores están fuera del Espacio Económico Europeo, por ejemplo en Estados Unidos. En esos casos las transferencias se apoyan en las garantías que cada proveedor declara aplicar, como las cláusulas contractuales tipo de la Comisión Europea.</p>
-
-<h2>6. Cuánto tiempo conservamos los datos</h2>
-<ul>
-  <li>Cuenta, registro de uso y fecha de aceptación: mientras exista tu cuenta. Al borrarla se eliminan.</li>
-  <li>Contenido de tus conversaciones: no se conserva en nuestro servidor.</li>
-  <li>Registros técnicos del servidor: el tiempo que fije el proveedor de alojamiento. Los usamos solo para seguridad.</li>
-  <li>Bloqueos por intentos de acceso fallidos: unos minutos, solo en la memoria del servidor.</li>
-  <li>Los proveedores de IA conservan los datos que reciben según sus propias condiciones.</li>
-</ul>
-
-<h2>7. Cookies y almacenamiento en tu navegador</h2>
-<ul>
-  <li><strong>Cookie <code>si_session</code>.</strong> Es necesaria: mantiene tu sesión abierta. No es accesible desde scripts y dura hasta 30 días o hasta que cierras sesión.</li>
-  <li><strong>Valoraciones (opcional).</strong> Si pulsas 👍 o 👎 en una respuesta, guardamos solo un recuento por día, modelo y categoría. No va asociado a tu cuenta ni incluye lo que escribiste.</li>
-  <li><strong>Historial de conversaciones (opcional).</strong> Si lo dejas activado en Ajustes, tus conversaciones se guardan en este dispositivo (base de datos del navegador), no en nuestro servidor. Puedes borrarlas una a una o todas desde el historial, o desactivarlo.</li>
-  <li><strong>Almacenamiento local.</strong> Guarda tus preferencias (modo, categoría, formato de imagen, búsqueda web, ajustes de voz, estilo e instrucciones personales), que ya aceptaste esta política y tu clave de OpenRouter si la introduces.</li>
-  <li><strong>Caché de la aplicación.</strong> Guarda los archivos de la interfaz para abrirla más rápido. No contiene datos personales.</li>
-</ul>
-<p>No usamos cookies de publicidad ni de analítica. Puedes borrar estos datos desde los ajustes de tu navegador.</p>
-
-<h2>8. Tus derechos</h2>
-<p>Puedes pedir el acceso a tus datos, su rectificación, su supresión, la limitación o la oposición al tratamiento y la portabilidad. Escribe a <a href="mailto:superIA.superintelligence@proton.me">superIA.superintelligence@proton.me</a> y te responderemos en el plazo de un mes. Si crees que no hemos tratado bien tus datos, puedes reclamar ante la Agencia Española de Protección de Datos (<a href="https://www.aepd.es" target="_blank" rel="noopener noreferrer">aepd.es</a>).</p>
-<p><strong>Borrar tu cuenta.</strong> Puedes hacerlo tú mismo desde la aplicación: Ajustes → «Eliminar mi cuenta» (pide tu contraseña), o pedirlo por correo. Eliminaremos tu cuenta, tu registro de uso y la fecha de aceptación.</p>
-<p><strong>Residentes en California.</strong> No vendemos ni compartimos datos personales con fines de publicidad.</p>
-
-<h2>9. Seguridad</h2>
-<p>La aplicación usa conexión cifrada (HTTPS), guarda las contraseñas con hash, protege la sesión con una cookie no accesible desde scripts y limita los intentos de acceso fallidos. Ninguna medida es infalible. Si hubiera una brecha que suponga un riesgo para ti, lo notificaremos a la autoridad y a los afectados cuando la ley lo exija.</p>
-
-<h2>10. Menores</h2>
-<p>Para crear una cuenta hay que tener al menos 16 años y se pide confirmarlo. La aplicación no está dirigida a menores de esa edad y no recogemos conscientemente datos de ellos. Si crees que un menor se ha registrado, escríbenos y eliminaremos la cuenta.</p>
-
-<h2>11. Cambios en esta política</h2>
-<p>Si cambiamos esta política de forma importante, te pediremos que la aceptes de nuevo la próxima vez que entres. La fecha de arriba indica cuándo se actualizó por última vez.</p>
-
-<h2>12. Contacto</h2>
-<p><a href="mailto:superIA.superintelligence@proton.me">superIA.superintelligence@proton.me</a></p>
-</section>
-
-<hr>
-
-<!-- ======================= ENGLISH ======================= -->
-<section id="en" lang="en">
-<h1><span class="brand-title">Super IA Superintelligence</span><span class="doc-title">Privacy Policy</span></h1>
-<p class="meta">Last updated: October 31, 2026</p>
-
-<p>This policy explains what data Super IA Superintelligence (the “app”) processes, why, who it is shared with and what rights you have. The app receives your questions, sends them to one or more third-party artificial intelligence models and returns the answer or the generated image.</p>
-
-<h2>1. Who is responsible</h2>
-<p>The data controller is JASM30. You can write to <a href="mailto:superIA.superintelligence@proton.me">superIA.superintelligence@proton.me</a> about any privacy matter.</p>
-
-<h2>2. What data we process</h2>
-<ul>
-  <li><strong>Account.</strong> Your username and password. The password is stored hashed and we never see it in clear text. Accounts are created by the controller; we do not ask for your email address or name.</li>
-  <li><strong>What you write and send.</strong> Your questions, the latest messages of the current conversation, images and documents you attach (the text of a PDF or file is extracted in your browser and sent with the question), and the answers or images generated. We only use them to produce the answer. We do not store them in our database: the conversation exists in your browser while you keep it open.</li>
-  <li><strong>Usage record.</strong> For each account, the number of requests and the estimated cost per day, to enforce daily limits.</li>
-  <li><strong>Acceptance of this policy.</strong> The date you accepted it.</li>
-  <li><strong>Voice (optional).</strong> If you dictate with the microphone, the audio is processed by your browser's speech recognition service (for example Google in Chrome or Apple in Safari), under its own policy. We only receive the resulting text, never the audio. Read-aloud uses your device's voices.</li>
-  <li><strong>Technical data.</strong> Your IP address and basic connection data (browser, time). We use them for security, for example to limit failed login attempts, and they may remain in server logs.</li>
-  <li><strong>Your own OpenRouter key, if you choose to use one.</strong> It is stored in your browser and sent with each request so it can be used on your behalf. We do not store it on the server.</li>
-</ul>
-
-<h2>3. Why we use it and the legal basis</h2>
-<ul>
-  <li>To provide the service (sign-in, answering questions, generating images): necessary to provide the service you request (GDPR art. 6(1)(b)).</li>
-  <li>Security, abuse prevention and usage limits: legitimate interest in protecting the service and its cost (art. 6(1)(f)).</li>
-  <li>Being able to show that you accepted this policy: legitimate interest (art. 6(1)(f)).</li>
-</ul>
-<p>We do not use your data for advertising or profiling, we do not sell personal data, and we do not use your conversations to train models.</p>
-
-<h2>4. Who it is shared with</h2>
-<p>To answer you, the app has to send your content to third parties:</p>
-<ul>
-  <li><strong>OpenRouter</strong> (<a href="https://openrouter.ai/privacy" target="_blank" rel="noopener noreferrer">its privacy policy</a>). The intermediary that receives your questions, your images and, if you use one, your key, and routes them to the right model.</li>
-  <li><strong>AI model providers</strong> that OpenRouter routes the request to, for example Anthropic, OpenAI or Google. Depending on the question, one or several models are used at once. To create or edit images, a Google image model (Nano Banana) is used. Each provider applies its own policy to the data it receives.</li>
-  <li><strong>Web search.</strong> If you turn on “Web search”, or the question is about recent information, the text of the question may be used to search the internet through OpenRouter’s search service.</li>
-  <li><strong>The provider that hosts the server</strong>, which supplies the infrastructure.</li>
-</ul>
-<p>We do not share your data with anyone else, unless required by law. For that reason, do not include sensitive data about yourself or others in your questions if you do not want it to reach these providers.</p>
-
-<h2>5. International transfers</h2>
-<p>Some of these providers are outside the European Economic Area, for example in the United States. In those cases transfers rely on the safeguards each provider states it applies, such as the European Commission’s standard contractual clauses.</p>
-
-<h2>6. How long we keep data</h2>
-<ul>
-  <li>Account, usage record and acceptance date: while your account exists. They are deleted when it is deleted.</li>
-  <li>Content of your conversations: not kept on our server.</li>
-  <li>Technical server logs: for the period set by the hosting provider. We use them only for security.</li>
-  <li>Blocks after failed login attempts: a few minutes, only in the server’s memory.</li>
-  <li>AI providers keep the data they receive according to their own terms.</li>
-</ul>
-
-<h2>7. Cookies and browser storage</h2>
-<ul>
-  <li><strong>Cookie <code>si_session</code>.</strong> It is necessary: it keeps you signed in. It cannot be read by scripts and lasts up to 30 days or until you sign out.</li>
-  <li><strong>Ratings (optional).</strong> If you press 👍 or 👎 on an answer, we only store a count per day, model and category. It is not linked to your account and does not include what you wrote.</li>
-  <li><strong>Conversation history (optional).</strong> If you leave it on in Settings, your conversations are saved on this device (browser database), not on our server. You can delete them one by one or all at once from the history, or turn it off.</li>
-  <li><strong>Local storage.</strong> Saves your preferences (mode, category, image format, web search, voice settings, style and personal instructions), that you already accepted this policy, and your OpenRouter key if you enter one.</li>
-  <li><strong>App cache.</strong> Stores the interface files so the app opens faster. It contains no personal data.</li>
-</ul>
-<p>We do not use advertising or analytics cookies. You can delete this data from your browser settings.</p>
-
-<h2>8. Your rights</h2>
-<p>You can ask for access to your data, rectification, erasure, restriction or objection to processing, and portability. Write to <a href="mailto:superIA.superintelligence@proton.me">superIA.superintelligence@proton.me</a> and we will reply within one month. If you believe we have not handled your data properly, you can lodge a complaint with the Spanish Data Protection Agency (<a href="https://www.aepd.es" target="_blank" rel="noopener noreferrer">aepd.es</a>) or your local authority.</p>
-<p><strong>Deleting your account.</strong> You can do it yourself in the app: Settings → “Eliminar mi cuenta” (asks for your password), or ask by email. We will delete your account, your usage record and the acceptance date.</p>
-<p><strong>California residents.</strong> We do not sell or share personal data for advertising purposes.</p>
-
-<h2>9. Security</h2>
-<p>The app uses an encrypted connection (HTTPS), stores passwords hashed, protects your session with a cookie that scripts cannot read, and limits failed login attempts. No measure is infallible. If a breach posed a risk to you, we will notify the authority and those affected where the law requires it.</p>
-
-<h2>10. Children</h2>
-<p>You must be at least 16 to create an account and we ask you to confirm it. The app is not directed to anyone younger and we do not knowingly collect their data. If you believe a minor has signed up, write to us and we will delete the account.</p>
-
-<h2>11. Changes to this policy</h2>
-<p>If we change this policy in a significant way, we will ask you to accept it again the next time you sign in. The date above shows when it was last updated.</p>
-
-<h2>12. Contact</h2>
-<p><a href="mailto:superIA.superintelligence@proton.me">superIA.superintelligence@proton.me</a></p>
-</section>
-
+  <div class="band">
+    <section class="wrap final">
+      <h2>Haz tu primera pregunta</h2>
+      <p class="intro">Crea tu cuenta en un minuto y compruébalo con algo que te cueste de verdad.</p>
+      <a class="btn btn-primary" href="https://app.super-ia.es">Crear cuenta gratis</a>
+    </section>
+  </div>
 </main>
+
+<footer>
+  <div class="wrap row">
+    <span>© 2026 Super IA Superintelligence</span>
+    <nav aria-label="Legal">
+      <a href="/privacidad/">Privacidad</a>
+      <a href="/terminos/">Términos de uso</a>
+      <a href="mailto:superIA.superintelligence@proton.me">Contacto</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+(() => {
+  const EX = [
+    { q: 'Me sale «IndexError: list index out of range» en mi función de Python. ¿Qué falla?',
+      chips: [['Programación', 1], ['Complejidad media']],
+      t: 'Responde un modelo especializado en código', d: 'Te explica el fallo, te da la línea corregida y te avisa de los casos límite.' },
+    { q: '¿Cuál es la última versión estable de Python?',
+      chips: [['Actualidad', 1], ['Complejidad baja'], ['Búsqueda web']],
+      t: 'Responde un modelo con búsqueda web', d: 'Consulta fuentes recientes en lugar de fiarse de lo que ya sabía.' },
+    { q: 'Compara alquilar o comprar piso en Madrid con 40.000 € de ahorros, con números.',
+      chips: [['Razonamiento', 1], ['Complejidad alta']],
+      t: 'Escala a un panel: varios modelos y una síntesis', d: 'Cada modelo responde por separado, se funden en una respuesta y te dice cuánta confianza merece.' },
+    { q: 'Dibuja un faro al amanecer, con mar en calma.',
+      chips: [['Imagen', 1], ['Formato 16:9']],
+      t: 'Genera la imagen con Nano Banana', d: 'Puedes descargarla o pedir cambios sobre ella.' },
+  ];
+  const $ = s => document.querySelector(s);
+  const demo = $('#demo'), qt = $('#dqt'), chips = $('#dc'), out = $('#do'), t1 = $('#t1'), ts = $('#ts'), t2 = $('#t2');
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const tabs = [...demo.querySelectorAll('[role=tab]')];
+  const esc = s => s.replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  let timer = null, auto = !reduced, cur = 0, run = 0;
+  const later = (fn, ms) => new Promise(r => { timer = setTimeout(() => { fn && fn(); r(); }, ms); });
+  const showResult = e => {
+    chips.innerHTML = e.chips.map(c => `<li${c[1] ? ' class="hot"' : ''}>${esc(c[0])}</li>`).join('');
+    out.innerHTML = `<b><span class="spark" aria-hidden="true"></span>${esc(e.t)}</b><p>${esc(e.d)}</p>`;
+    [t1, ts, t2].forEach(x => x.classList.add('on'));
+  };
+  async function play(i, instant) {
+    clearTimeout(timer); const me = ++run; cur = i;
+    tabs.forEach((b, k) => b.setAttribute('aria-selected', String(k === i)));
+    const e = EX[i];
+    if (instant || reduced) { qt.textContent = e.q; showResult(e); return; }
+    demo.dataset.live = '1';
+    chips.innerHTML = ''; out.innerHTML = '<b>&nbsp;</b><p>&nbsp;</p>'; [t1, ts, t2].forEach(x => x.classList.remove('on')); t1.classList.add('on');
+    qt.textContent = '';
+    for (let n = 1; n <= e.q.length; n++) { qt.textContent = e.q.slice(0, n); await later(null, 18); if (me !== run) return; }
+    await later(null, 250); if (me !== run) return;
+    ts.classList.add('on'); chips.innerHTML = e.chips.map(c => `<li${c[1] ? ' class="hot"' : ''}>${esc(c[0])}</li>`).join('');
+    await later(null, 450); if (me !== run) return;
+    showResult(e);
+    if (auto) { await later(null, 4200); if (me === run && auto && !document.hidden) play((i + 1) % EX.length); }
+  }
+  tabs.forEach((b, k) => b.addEventListener('click', () => { auto = false; play(k, reduced); }));
+  tabs.forEach(b => b.addEventListener('keydown', ev => {
+    if (ev.key !== 'ArrowRight' && ev.key !== 'ArrowLeft') return;
+    const k = (cur + (ev.key === 'ArrowRight' ? 1 : tabs.length - 1)) % tabs.length; auto = false; play(k, reduced); tabs[k].focus();
+  }));
+  if (!reduced) setTimeout(() => play(0), 600);
+})();
+</script>
 </body>
 </html>
